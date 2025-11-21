@@ -81,15 +81,17 @@ document.getElementById("copyCodeBtn").onclick = async () => {
 // Функция отправки данных в Telegram
 async function sendToTelegram(formData, trackCode) {
   const message = `
-    Новый ответ на форму:
-    Имя: ${formData.firstName}
-    Фамилия: ${formData.lastName}
-    Телефон: ${formData.phone}
-    Дата рождения: ${formData.birthDate}
-    Платформа: ${formData.platform}
-    Telegram: ${formData.telegram}
-    Дополнительно: ${formData.extra}
-    Трек-код: ${trackCode}  // Добавляем трек-код в сообщение
+  🆕 Новый ответ на форму:
+  
+   👤 Имя: ${formData.firstName}
+   👤 Фамилия: ${formData.lastName}
+   📱 Телефон: ${formData.phone}
+   🎂 Дата рождения: ${formData.birthDate}
+   📲 Платформа: ${formData.platform}
+   ✈️ Telegram: ${formData.telegram}
+   💬 Дополнительно: ${formData.extra}
+   
+   📩 Трек-код: ${trackCode}  
   `;
 
   try {
