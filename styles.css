@@ -1,0 +1,80 @@
+
+body { background:#f4fafb; margin:0; font-family:system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+.page { max-width:900px; margin:auto; padding:16px; }
+
+.header {
+  background:white; padding:14px 18px; border-radius:20px;
+  box-shadow:0 3px 12px rgba(0,0,0,.08);
+  font-size:20px; font-weight:700;
+}
+
+.card {
+  background:white; padding:20px; border-radius:20px;
+  box-shadow:0 5px 20px rgba(0,0,0,.08); margin-top:20px;
+}
+
+.chip {
+  display:inline-block; background:#e9fbff; padding:6px 12px;
+  border-radius:20px; margin-bottom:10px; font-size:13px;
+}
+
+.form-title { font-size:22px; font-weight:700; margin-bottom:6px; }
+.form-sub { font-size:13px; color:#6b7280; margin-bottom:16px; }
+
+.form-group { margin-bottom:14px; }
+.form-group label { display:block; margin-bottom:4px; font-size:14px; font-weight:500; }
+
+.input, .textarea {
+  width:100%; padding:12px; border-radius:14px;
+  border:1px solid #dbe7f0; background:#f9feff; font-size:14px;
+}
+.input:focus, .textarea:focus {
+  outline:none; border-color:#00d6c6; background:white;
+  box-shadow:0 0 0 1px rgba(0,214,198,.3);
+}
+
+.textarea { min-height:80px; resize:vertical; }
+
+.submit-btn {
+  width:100%; padding:14px; border:none; border-radius:30px;
+  background:linear-gradient(90deg,#00d6c6,#07c3ff);
+  color:white; font-weight:700; font-size:16px; cursor:pointer;
+  box-shadow:0 5px 20px rgba(0,214,198,.5);
+}
+
+.platform-row { display:flex; gap:10px; }
+.platform {
+  flex:1; text-align:center; padding:10px; border-radius:14px;
+  border:1px solid #dbe7f0; background:#f9feff; cursor:pointer;
+}
+.platform.active { border-color:#00d6c6; background:white; box-shadow:0 0 0 1px rgba(0,214,198,.3); }
+
+.modal-backdrop {
+  position:fixed; inset:0; background:rgba(0,0,0,.5);
+  display:none; justify-content:center; align-items:center;
+}
+.modal-backdrop.visible { display:flex; }
+
+.modal {
+  background:white; padding:20px; border-radius:20px;
+  width:90%; max-width:350px; text-align:center;
+  box-shadow:0 10px 28px rgba(0,0,0,.35);
+}
+.modal-icon { font-size:28px; margin-bottom:6px; }
+.modal-title { font-size:18px; margin-bottom:4px; }
+.modal-sub { font-size:13px; color:#4b5563; margin-bottom:6px; }
+.track-code-value { font-size:32px; font-weight:800; letter-spacing:3px; margin-bottom:10px; }
+
+.btn-primary, .btn-outline, .btn-ghost {
+  width:100%; padding:12px; border-radius:20px; margin-top:10px;
+  border:none; cursor:pointer; font-size:14px;
+}
+.btn-primary { background:linear-gradient(90deg,#00d6c6,#07c3ff); color:white; }
+.btn-outline { background:#eefaff; color:#0077cc; text-decoration:none; display:block; }
+.btn-ghost { background:#f3f3f3; }
+
+.status-message {
+  margin-top:8px;
+  font-size:12px;
+  color:#6b7280;
+}

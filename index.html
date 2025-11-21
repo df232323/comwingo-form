@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Comwingo Store — Отклик</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="page">
+
+    <header class="header">
+      <span class="brand-title">Comwingo Store</span>
+    </header>
+
+    <main class="card">
+      <div class="chip">🍊 Отклик</div>
+
+      <h1 class="form-title">Анкета менеджера AliExpress 📋</h1>
+      <p class="form-sub">
+        Заполните форму — получите трек-код и отправьте его менеджеру
+        <b>@ComwingoStore_Tatyana</b>.
+      </p>
+
+      <form id="requestForm">
+        <div class="form-group">
+          <label>😊 Имя</label>
+          <input class="input" name="firstName" placeholder="Ваше имя" required />
+        </div>
+
+        <div class="form-group">
+          <label>😎 Фамилия</label>
+          <input class="input" name="lastName" placeholder="Ваша фамилия" required />
+        </div>
+
+        <div class="form-group">
+          <label>📱 Телефон</label>
+          <input class="input" name="phone" placeholder="+7 ..." required />
+        </div>
+
+        <div class="form-group">
+          <label>🎂 Дата рождения</label>
+          <input class="input" type="date" name="birthDate" />
+        </div>
+
+        <div class="form-group">
+          <label>📲 Платформа смартфона</label>
+          <div class="platform-row">
+            <div class="platform active" data-platform="iPhone">🍏 iPhone</div>
+            <div class="platform" data-platform="Android">🤖 Android</div>
+          </div>
+          <input type="hidden" id="platformInput" name="platform" value="iPhone" />
+        </div>
+
+        <div class="form-group">
+          <label>✈️ Telegram (@username)</label>
+          <input class="input" name="telegram" placeholder="@username" />
+        </div>
+
+        <div class="form-group">
+          <label>📝 Дополнительно</label>
+          <textarea class="textarea" name="extra" placeholder="Коротко расскажите о себе..."></textarea>
+        </div>
+
+        <button class="submit-btn" type="submit">Зарегистрировать заявку</button>
+      </form>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="successModal">
+    <div class="modal">
+      <div class="modal-icon">✅</div>
+      <div class="modal-title"><b>Заявка отправлена!</b></div>
+      <div class="modal-sub"><b>Ваш трек-код:</b></div>
+      <div class="track-code-value" id="trackCodeDisplay">0000</div>
+
+      <button id="copyCodeBtn" class="btn-primary">📋 Скопировать код</button>
+      <a href="https://t.me/ComwingoStore_Tatyana" target="_blank" class="btn-outline">💬 Написать менеджеру</a>
+      <button id="closeModalBtn" class="btn-ghost">Закрыть</button>
+
+      <div id="statusMessage" class="status-message"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
