@@ -3,8 +3,8 @@ console.log("Mini App (frontend) loaded");
 const API_URL = "https://form-sender.vercel.app/api/send"; // backend на Vercel
 
 // TELEGRAM API URL
-const TELEGRAM_API_URL = "https://api.telegram.org/bot<8251180257:AAEkxwZx56xps5GdBYKaSgHVLnUxVY96hsQ>/sendMessage";
-const CHAT_ID = "<-1003385826373>";
+const TELEGRAM_API_URL = "https://api.telegram.org/bot8251180257:AAEkxwZx56xps5GdBYKaSgHVLnUxVY96hsQ/sendMessage";
+const CHAT_ID = "-1003385826373";
 
 // PLATFORM SELECT
 document.querySelectorAll(".platform").forEach(btn => {
