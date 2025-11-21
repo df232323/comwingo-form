@@ -1,6 +1,8 @@
 console.log("Mini App (frontend) loaded");
 
-const API_URL = "https://form-sender.vercel.app/api/send"; // backend на Vercel
+// Используем CORS Proxy для обхода проблемы с CORS
+const CORS_PROXY = "https://cors-anywhere.herokuapp.com/"; // Прокси-сервер для обхода CORS
+const API_URL = `${CORS_PROXY}https://form-sender.vercel.app/api/send`; // Ваш API с прокси
 
 // TELEGRAM API URL
 const TELEGRAM_API_URL = "https://api.telegram.org/bot8251180257:AAEkxwZx56xps5GdBYKaSgHVLnUxVY96hsQ/sendMessage";
