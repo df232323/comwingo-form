@@ -51,6 +51,7 @@ form.onsubmit = async (e) => {
     }
 
     // Отправка данных в Telegram
+    console.log("Отправка запроса в Telegram...");
     await sendToTelegram(data);
   } catch (err) {
     console.error("Ошибка при запросе к backend:", err);
@@ -88,12 +89,25 @@ async function sendToTelegram(formData) {
     Дополнительно: ${formData.extra}
   `;
 
-  await fetch(TELEGRAM_API_URL, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      chat_id: CHAT_ID,
-      text: message,
-    }),
-  });
+  try {
+    const response = await fetch(TELEGRAM_API_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        chat_id: CHAT_ID,
+        text: message,
+      }),
+    });
+
+    const responseJson = await response.json();
+    console.log('Ответ от Telegram API:', responseJson);
+
+    if (!response.ok) {
+      console.error('Ошибка при отправке в Telegram:', responseJson);
+    } else {
+      console.log('Сообщение успешно отправлено в Telegram');
+    }
+  } catch (error) {
+    console.error('Ошибка при отправке сообщения в Telegram:', error);
+  }
 }
