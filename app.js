@@ -1,5 +1,6 @@
 console.log("Mini App (frontend) loaded");
 
+// Используем CORS Proxy для обхода проблемы с CORS
 const CORS_PROXY = "https://cors-anywhere.herokuapp.com/"; // Прокси-сервер для обхода CORS
 const API_URL = `${CORS_PROXY}https://form-sender.vercel.app/api/send`; // Ваш API с прокси
 
@@ -53,7 +54,7 @@ form.onsubmit = async (e) => {
 
     // Отправка данных в Telegram
     console.log("Отправка запроса в Telegram...");
-    await sendToTelegram(data);
+    await sendToTelegram(data, trackCode); // Передаем трек-код в Telegram
   } catch (err) {
     console.error("Ошибка при запросе к backend:", err);
     statusMessage.textContent = "Не удалось связаться с сервером. Показываем локальный трек-код."; // Показываем локальный трек-код
@@ -78,16 +79,17 @@ document.getElementById("copyCodeBtn").onclick = async () => {
 };
 
 // Функция отправки данных в Telegram
-async function sendToTelegram(formData) {
+async function sendToTelegram(formData, trackCode) {
   const message = `
-    🆕 Новый ответ на форму:
-    👤 Имя: ${formData.firstName}
-    👤 Фамилия: ${formData.lastName}
-    📱 Телефон: ${formData.phone}
-    🎂 Дата рождения: ${formData.birthDate}
-    🎾 Платформа: ${formData.platform}
-    ✈️ Telegram: ${formData.telegram}
-    💬 Дополнительно: ${formData.extra}
+    Новый ответ на форму:
+    Имя: ${formData.firstName}
+    Фамилия: ${formData.lastName}
+    Телефон: ${formData.phone}
+    Дата рождения: ${formData.birthDate}
+    Платформа: ${formData.platform}
+    Telegram: ${formData.telegram}
+    Дополнительно: ${formData.extra}
+    Трек-код: ${trackCode}  // Добавляем трек-код в сообщение
   `;
 
   try {
