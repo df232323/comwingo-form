@@ -1,6 +1,5 @@
 console.log("Mini App (frontend) loaded");
 
-// Используем CORS Proxy для обхода проблемы с CORS
 const CORS_PROXY = "https://cors-anywhere.herokuapp.com/"; // Прокси-сервер для обхода CORS
 const API_URL = `${CORS_PROXY}https://form-sender.vercel.app/api/send`; // Ваш API с прокси
 
@@ -32,7 +31,7 @@ form.onsubmit = async (e) => {
   const formData = new FormData(form);
   const data = Object.fromEntries(formData.entries());
 
-  // На всякий случай трек-код генерируем локально (если backend не ответит)
+  // Локальный fallback для трек-кода
   let trackCode = generateFallbackCode();
 
   try {
@@ -45,11 +44,11 @@ form.onsubmit = async (e) => {
     if (res.ok) {
       const json = await res.json().catch(() => ({}));
       if (json && json.trackCode) {
-        trackCode = json.trackCode;
+        trackCode = json.trackCode; // Используем трек-код, если сервер вернул его
       }
-      statusMessage.textContent = "Заявка отправлена менеджеру ✅";
+      statusMessage.textContent = "Заявка отправлена менеджеру ✅"; // Убираем сообщение об ошибке
     } else {
-      statusMessage.textContent = "Заявка отправлена локально. Backend вернул ошибку.";
+      statusMessage.textContent = ""; // Убираем сообщение о локальной отправке
     }
 
     // Отправка данных в Telegram
@@ -57,10 +56,10 @@ form.onsubmit = async (e) => {
     await sendToTelegram(data);
   } catch (err) {
     console.error("Ошибка при запросе к backend:", err);
-    statusMessage.textContent = "Не удалось связаться с сервером. Показываем локальный трек-код.";
+    statusMessage.textContent = "Не удалось связаться с сервером. Показываем локальный трек-код."; // Показываем локальный трек-код
   }
 
-  trackCodeDisplay.textContent = trackCode;
+  trackCodeDisplay.textContent = trackCode; // Отображаем трек-код
   modal.classList.add("visible");
   form.reset();
   document.querySelectorAll(".platform").forEach(b => b.classList.remove("active"));
@@ -81,14 +80,14 @@ document.getElementById("copyCodeBtn").onclick = async () => {
 // Функция отправки данных в Telegram
 async function sendToTelegram(formData) {
   const message = `
-    Новый ответ на форму:
-    Имя: ${formData.firstName}
-    Фамилия: ${formData.lastName}
-    Телефон: ${formData.phone}
-    Дата рождения: ${formData.birthDate}
-    Платформа: ${formData.platform}
-    Telegram: ${formData.telegram}
-    Дополнительно: ${formData.extra}
+    🆕 Новый ответ на форму:
+    👤 Имя: ${formData.firstName}
+    👤 Фамилия: ${formData.lastName}
+    📱 Телефон: ${formData.phone}
+    🎂 Дата рождения: ${formData.birthDate}
+    🎾 Платформа: ${formData.platform}
+    ✈️ Telegram: ${formData.telegram}
+    💬 Дополнительно: ${formData.extra}
   `;
 
   try {
